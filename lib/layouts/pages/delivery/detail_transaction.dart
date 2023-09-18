@@ -56,12 +56,8 @@ class _DetailTransactionState extends State<DetailTransaction> {
       'id': selectData['surat_jalan']['id'].toString(),
       'title': selectData['surat_jalan']['kode'],
     }).then((value) async {
-      if (value == null) {
-        // print('kosong');
-      } else {
-        if (value is Map) {
-          getData();
-        }
+      if (value != null) {
+        getData();
       }
     });
   }

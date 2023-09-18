@@ -26,7 +26,7 @@ class _ListTransactionState extends State<ListTransaction> {
       onTap: () => widget.action(),
       child: Container(
         padding: const EdgeInsets.all(10.0),
-        margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+        margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10.0),
