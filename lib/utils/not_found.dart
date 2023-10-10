@@ -46,13 +46,17 @@ class NotFound extends StatelessWidget {
             //   width: size == 'mini' ? 60 : 100,
             // ),
             // const SizedBox(height: 10),
-            Text(
-              label ?? '',
-              style: TextStyle(
-                fontSize: size == 'mini' ? 12 : 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[600],
-              ),
+            // Text(
+            //   label ?? '',
+            //   style: TextStyle(
+            //     fontSize: size == 'mini' ? 12 : 20,
+            //     fontWeight: FontWeight.bold,
+            //     color: Colors.grey[600],
+            //   ),
+            // ),
+            const Icon(
+              Icons.inbox_outlined,
+              size: 80,
             )
           ]
         ],
