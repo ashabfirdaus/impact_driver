@@ -46,7 +46,7 @@ class _LoginState extends State<Login> {
     EasyLoading.show(status: 'Loading...');
     try {
       Map data = await ActionMethod.postNoAuth(
-        'Identity/userLogin',
+        'Identity/userLoginDriver',
         {
           'identity': _username.text,
           'password': _password.text,
@@ -62,7 +62,6 @@ class _LoginState extends State<Login> {
         await storage.write(
             key: 'user', value: jsonEncode(data['values']['user']));
 
-        NotificationBar.toastr(data['message'], 'success');
         EasyLoading.dismiss();
         Navigator.of(context)
             .pushNamedAndRemoveUntil('/tabs', (route) => false);
