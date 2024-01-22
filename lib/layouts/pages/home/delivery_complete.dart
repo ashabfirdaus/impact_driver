@@ -81,7 +81,8 @@ class _DeliveryCompleteState extends State<DeliveryComplete> {
           "num_page": loadMore["limit"].toString(),
           "page": loadMore["current_page"].toString(),
           "keyword": searchText.text.toString(),
-          "status_kirim": '1'
+          "status_kirim": '1',
+          "karyawan_id": GlobalConfig.user['anggota_id']
         },
       );
 

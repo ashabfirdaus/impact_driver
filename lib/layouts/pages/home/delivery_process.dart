@@ -79,7 +79,8 @@ class _DeliveryProcessState extends State<DeliveryProcess> {
           "num_page": loadMorePro["limit"].toString(),
           "page": loadMorePro["current_page"].toString(),
           "keyword": searchText.text.toString(),
-          "status_kirim": '0'
+          "status_kirim": '0',
+          "karyawan_id": GlobalConfig.user['anggota_id']
         },
       );
 

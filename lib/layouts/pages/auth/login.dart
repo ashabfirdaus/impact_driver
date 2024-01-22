@@ -58,7 +58,6 @@ class _LoginState extends State<Login> {
         // GlobalConfig.token = data['access_token'];
         GlobalConfig.user = data['values']['user'];
 
-        // await storage.write(key: 'token', value: data['access_token']);
         await storage.write(
             key: 'user', value: jsonEncode(data['values']['user']));
 
