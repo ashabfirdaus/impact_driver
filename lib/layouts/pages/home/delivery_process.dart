@@ -125,9 +125,7 @@ class _DeliveryProcessState extends State<DeliveryProcess> {
       'id': object['surat_jalan']['id'].toString(),
       'title': object['surat_jalan']['kode'],
     }).then((value) async {
-      if (value == null) {
-        // print('kosong');
-      }
+      refreshGetDataPro();
     });
   }
 

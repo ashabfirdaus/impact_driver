@@ -55,6 +55,7 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
       if (data['statusCode'] == 200) {
         NotificationBar.toastr(data['message'], 'success');
         Navigator.pop(context);
+        Navigator.pop(context);
         Navigator.pop(context, true);
         EasyLoading.dismiss();
       } else {
