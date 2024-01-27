@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:widget_zoom/widget_zoom.dart';
 
 import '../../../services/action.dart';
 import '../../../services/global.dart';
@@ -60,11 +61,6 @@ class _DetailTransactionState extends State<DetailTransaction> {
         getData();
       }
     });
-  }
-
-  void previewBuktiFoto() {
-    Navigator.pushNamed(context, '/preview-image',
-        arguments: {'image_url': selectData['surat_jalan']['foto_bukti']});
   }
 
   @override
@@ -147,26 +143,6 @@ class _DetailTransactionState extends State<DetailTransaction> {
                                   style: const TextStyle(color: Colors.white),
                                 ),
                               ),
-                              if (selectData['surat_jalan']['foto_bukti'] !=
-                                      '' &&
-                                  selectData['surat_jalan']['foto_bukti'] !=
-                                      null) ...[
-                                const SizedBox(height: 20),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[100],
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: TextButton.icon(
-                                    style: TextButton.styleFrom(
-                                      foregroundColor: Colors.black54,
-                                    ),
-                                    icon: const Icon(Icons.image),
-                                    label: const Text("Foto Bukti"),
-                                    onPressed: () => previewBuktiFoto(),
-                                  ),
-                                ),
-                              ]
                             ],
                           ),
                         ),
@@ -210,13 +186,32 @@ class _DetailTransactionState extends State<DetailTransaction> {
                                 style: const TextStyle(fontSize: 15),
                               )),
                               Text(
-                                item['qty'].toString(),
+                                item['qty_kirim'].toString(),
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
                         ),
+                      if (selectData['surat_jalan']['foto_bukti'] != '' &&
+                          selectData['surat_jalan']['foto_bukti'] != null) ...[
+                        const SizedBox(height: 20),
+                        const Text(
+                          'Foto Bukti',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 10),
+                        WidgetZoom(
+                          heroAnimationTag: 'tag',
+                          zoomWidget: Image.network(
+                            selectData['surat_jalan']['foto_bukti'],
+                            width: 150,
+                            height: 150,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
                       const SizedBox(height: 20),
                       if (selectData['surat_jalan']['status_kirim'] == '0')
                         ButtonFullWidth(
