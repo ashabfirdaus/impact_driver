@@ -73,6 +73,9 @@ class _ListTransactionState extends State<ListTransaction> {
                             Text(widget.content['customer'] != null
                                 ? widget.content['customer']['no_hp']
                                 : ''),
+                            Text(widget.content['surat_jalan'] != null
+                                ? widget.content['surat_jalan']['keterangan']
+                                : ''),
                           ],
                         ),
                       ),

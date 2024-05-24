@@ -98,13 +98,18 @@ class _DetailTransactionState extends State<DetailTransaction> {
                                 selectData['customer']['no_hp'],
                                 style: const TextStyle(fontSize: 15),
                               ),
+                              const SizedBox(height: 10),
+                              Text(
+                                selectData['surat_jalan']['keterangan'],
+                                style: const TextStyle(fontSize: 15),
+                              ),
                               if (selectData['surat_jalan']['penerima'] !=
                                   null) ...[
                                 const SizedBox(height: 10),
                                 Row(
                                   children: [
                                     const SizedBox(
-                                      width: 60,
+                                      width: 80,
                                       child: Text(
                                         'Penerima',
                                         style: TextStyle(

@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <application
-        android:label="Impact Driver"
+        android:label="Impact Delivery"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
