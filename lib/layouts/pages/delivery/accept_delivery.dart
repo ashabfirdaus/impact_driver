@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../../../services/action.dart';
@@ -27,11 +28,12 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
   Map selectData = {};
   String photoEncode = '';
   String photo = '';
+  List photos = [];
 
   void validation() {
     if (_formKey.currentState!.validate()) {
       GlobalConfig.unfocus(context);
-      if (photo == '') {
+      if (photos.isEmpty) {
         NotificationBar.toastr('Gambar Pengiriman harus diisi', 'error');
       } else {
         showConfirmation(context);
@@ -85,6 +87,7 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
                       setState(() {
                         photoEncode = value;
                         photo = split[1];
+                        photos.add(split[1]);
                       });
                     }
                   }),
@@ -103,6 +106,7 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
                         setState(() {
                           photoEncode = value;
                           photo = split[1];
+                          photos.add(split[1]);
                         });
                       });
                     }
@@ -171,12 +175,27 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
     );
   }
 
+  void showPreviewImage(img) {
+    Navigator.pushNamed(
+      context,
+      '/preview-image',
+      arguments: {
+        'img': base64Decode(img),
+      },
+    );
+  }
+
+  void removeImage(index) {
+    setState(() {
+      photos.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.content['title']),
-        backgroundColor: GlobalConfig.primaryColor,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -217,33 +236,98 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
                   ),
                   const SizedBox(height: 20),
                   Container(
-                    alignment: Alignment.center,
-                    child: photo == ''
-                        ? Image.asset('images/blank.png', width: 300)
-                        : Image.memory(base64Decode(photo), height: 300),
-                  ),
-                  const SizedBox(height: 20),
-                  if (photo != '')
-                    ButtonFullWidth(
-                      label: 'Hapus File',
-                      action: () => clearImage(),
-                      color: Colors.white,
-                      background: false,
-                    )
-                  else
-                    ButtonFullWidth(
-                      label: 'Ambil Gambar +',
-                      action: () => settingModalBottomSheet(context),
-                      color: Colors.white,
-                      background: false,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(5),
+                        topRight: Radius.circular(5),
+                      ),
                     ),
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        for (var i = 0; i < photos.length; i++)
+                          Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              InkWell(
+                                onTap: () => showPreviewImage(photos[i]),
+                                child: Container(
+                                  margin: const EdgeInsets.all(5),
+                                  child: Image.memory(
+                                    base64Decode(photos[i]),
+                                    width: 200,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(25),
+                                  ),
+                                  child: IconButton(
+                                    onPressed: () => removeImage(i),
+                                    icon: const Icon(
+                                      Icons.close,
+                                      color: Colors.white,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                      ],
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => settingModalBottomSheet(context),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.blue[100],
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(5),
+                          bottomRight: Radius.circular(5),
+                        ),
+                      ),
+                      child: const Icon(Icons.add_a_photo_outlined),
+                    ),
+                  ),
+                  // Container(
+                  //   alignment: Alignment.center,
+                  //   child: photo == ''
+                  //       ? Image.asset('images/blank.png', width: 300)
+                  //       : Image.memory(base64Decode(photo), height: 300),
+                  // ),
+                  // const SizedBox(height: 20),
+                  // if (photo != '')
+                  //   ButtonFullWidth(
+                  //     label: 'Hapus File',
+                  //     action: () => clearImage(),
+                  //     color: Colors.white,
+                  //     background: false,
+                  //   )
+                  // else
+                  //   ButtonFullWidth(
+                  //     label: 'Ambil Gambar +',
+                  //     action: () => settingModalBottomSheet(context),
+                  //     color: Colors.white,
+                  //     background: false,
+                  //   ),
                   const SizedBox(height: 20),
-                  ButtonFullWidth(
-                    label: 'Simpan',
-                    color: Colors.white,
-                    background: true,
-                    action: () => validation(),
-                  )
+                  if (_receiver.text != '')
+                    ButtonFullWidth(
+                      label: 'Simpan',
+                      color: Colors.white,
+                      background: true,
+                      action: () => validation(),
+                    )
                 ],
               ),
             ),

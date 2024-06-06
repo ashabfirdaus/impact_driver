@@ -33,6 +33,12 @@ class MyApp extends StatelessWidget {
       title: 'Impact',
       theme: ThemeData(
         primaryColor: GlobalConfig.primaryColor,
+        appBarTheme: AppBarTheme(
+          iconTheme: const IconThemeData(color: Colors.white),
+          titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
+          centerTitle: true,
+          backgroundColor: GlobalConfig.primaryColor,
+        ),
       ),
       initialRoute: '/',
       routes: AppRoutes.route,

@@ -174,7 +174,6 @@ class _DeliveryProcessState extends State<DeliveryProcess> {
             icon: customIcon,
           )
         ],
-        backgroundColor: GlobalConfig.primaryColor,
       ),
       body: GestureDetector(
         onTap: () => GlobalConfig.unfocus(context),

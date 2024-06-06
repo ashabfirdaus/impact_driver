@@ -178,7 +178,6 @@ class _DeliveryCompleteState extends State<DeliveryComplete> {
             icon: customIcon,
           )
         ],
-        backgroundColor: GlobalConfig.primaryColor,
       ),
       body: GestureDetector(
         onTap: () => GlobalConfig.unfocus(context),

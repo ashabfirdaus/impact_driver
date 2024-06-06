@@ -68,7 +68,6 @@ class _DetailTransactionState extends State<DetailTransaction> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.content['title']),
-        backgroundColor: GlobalConfig.primaryColor,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
