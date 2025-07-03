@@ -186,11 +186,14 @@ class _DeliveryCompleteState extends State<DeliveryComplete> {
         datetime = pickedDate;
         _date.text = formattedDate;
         tempDate = DateFormat('y-M-d', "id_ID").format(pickedDate).toString();
+
+        loadMore["current_page"] = 1;
       });
     } else {
       setState(() {
         _date.text = '';
         tempDate = '';
+        loadMore["current_page"] = 1;
       });
     }
 

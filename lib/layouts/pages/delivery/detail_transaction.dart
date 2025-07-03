@@ -28,11 +28,6 @@ class _DetailTransactionState extends State<DetailTransaction> {
     '1': {'status': 'Terkirim', 'color': Colors.cyan}
   };
   List photos = [];
-  List tempPhoto = [
-    'https://plus.unsplash.com/premium_photo-1683910767532-3a25b821f7ae?q=80&w=808&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    'https://images.unsplash.com/photo-1626808642875-0aa545482dfb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    'https://images.unsplash.com/photo-1710609942195-b9dab8f48fc6?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-  ];
 
   @override
   void initState() {
@@ -199,7 +194,7 @@ class _DetailTransactionState extends State<DetailTransaction> {
                           ],
                         )
                       ],
-                      // const SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       if (photos.isNotEmpty)
                         Container(
                           height: 200,
@@ -219,7 +214,7 @@ class _DetailTransactionState extends State<DetailTransaction> {
                                   children: [
                                     InkWell(
                                       onTap: () => showPreviewImage(
-                                          photos[i].trim(), tempPhoto, i),
+                                          photos[i].trim(), photos, i),
                                       child: Container(
                                         margin: const EdgeInsets.all(5),
                                         child: Image.network(

@@ -182,11 +182,14 @@ class _DeliveryProcessState extends State<DeliveryProcess> {
         datetime = pickedDate;
         _date.text = formattedDate;
         tempDate = DateFormat('y-M-d', "id_ID").format(pickedDate).toString();
+
+        loadMorePro["current_page"] = 1;
       });
     } else {
       setState(() {
         _date.text = '';
         tempDate = '';
+        loadMorePro["current_page"] = 1;
       });
     }
 
