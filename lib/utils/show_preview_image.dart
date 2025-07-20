@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -27,10 +29,12 @@ class ShowPreviewImage extends StatelessWidget {
           scrollPhysics: const BouncingScrollPhysics(),
           builder: (BuildContext context, int index) {
             return PhotoViewGalleryPageOptions(
-              imageProvider: NetworkImage(content['images'][index]),
-              initialScale: PhotoViewComputedScale.contained * 0.8,
+              imageProvider: content['type'] == 'base64'
+                  ? MemoryImage(base64Decode(content['images'][index]))
+                  : NetworkImage(content['images'][index]) as ImageProvider,
+              // initialScale: PhotoViewComputedScale.contained * 0.8,
               minScale: PhotoViewComputedScale.contained * 0.8,
-              maxScale: PhotoViewComputedScale.covered * 1.1,
+              // maxScale: PhotoViewComputedScale.covered * 1.1,
               // heroAttributes: HeroAttributes(tag: galleryItems[index].id),
             );
           },

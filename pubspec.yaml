@@ -1,7 +1,7 @@
 name: impact_driver_v2
 description: "A new Flutter project."
 publish_to: 'none'
-version: 1.0.19+19
+version: 1.0.20+20
 
 environment:
   sdk: '>=3.3.4 <4.0.0'

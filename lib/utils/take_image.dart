@@ -13,11 +13,11 @@ class TakeImage {
     switch (pickerType) {
       case "gallery":
         pickedFile = await picker.pickImage(
-            source: ImageSource.gallery, maxHeight: 720.0, imageQuality: 65);
+            source: ImageSource.gallery, maxHeight: 1280.0, imageQuality: 100);
         break;
       case "camera":
         pickedFile = await picker.pickImage(
-            source: ImageSource.camera, maxHeight: 720.0, imageQuality: 65);
+            source: ImageSource.camera, maxHeight: 1280.0, imageQuality: 100);
         break;
     }
 

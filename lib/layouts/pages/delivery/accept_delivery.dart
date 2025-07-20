@@ -180,11 +180,16 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
     );
   }
 
-  void showPreviewImage(img) {
+  void showPreviewImage(img, i) {
     Navigator.pushNamed(
       context,
       '/preview-image',
-      arguments: {'img': base64Decode(img), 'type': 'base64'},
+      arguments: {
+        'img': base64Decode(img),
+        'type': 'base64',
+        'images': photos,
+        'initialIndex': i
+      },
     );
   }
 
@@ -263,7 +268,7 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
                             alignment: Alignment.topRight,
                             children: [
                               InkWell(
-                                onTap: () => showPreviewImage(photos[i]),
+                                onTap: () => showPreviewImage(photos[i], i),
                                 child: Container(
                                   margin: const EdgeInsets.all(5),
                                   child: Image.memory(

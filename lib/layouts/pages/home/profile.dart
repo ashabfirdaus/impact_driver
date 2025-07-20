@@ -52,7 +52,7 @@ class _ProfileState extends State<Profile> with AutomaticKeepAliveClientMixin {
                     )
                   : Image.asset(
                       'images/logo.png',
-                      width: 150.0,
+                      // width: 150.0,
                       fit: BoxFit.cover,
                       height: 150.0,
                     ),
