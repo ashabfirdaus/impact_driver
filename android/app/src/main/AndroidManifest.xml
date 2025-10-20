@@ -6,7 +6,10 @@
     <application
         android:label="Impact Delivery"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:largeHeap="false"
+        android:hardwareAccelerated="true"
+        android:allowBackup="false">
         <activity
             android:name=".MainActivity"
             android:exported="true"

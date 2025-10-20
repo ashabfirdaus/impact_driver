@@ -1,0 +1,11 @@
+# Baseline profile for Impact Driver v2
+# This file helps optimize app startup and memory usage
+
+# Core Flutter classes
+Landroidx/lifecycle/ViewModelProvider;
+Lio/flutter/embedding/android/FlutterActivity;
+Lio/flutter/embedding/engine/FlutterEngine;
+Lio/flutter/plugin/common/MethodChannel;
+
+# Main application classes  
+Lcom/impactapp/driver/MainActivity;
