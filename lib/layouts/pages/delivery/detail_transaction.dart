@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:intl/intl.dart';
-import 'package:widget_zoom/widget_zoom.dart';
 
 import '../../../services/action.dart';
 import '../../../services/global.dart';
@@ -54,10 +53,10 @@ class _DetailTransactionState extends State<DetailTransaction> {
           }
         });
       } else {
-        NotificationBar.toastr(data['message'], 'error');
+        NotificationBar.error(context, data['message']);
       }
     } catch (e) {
-      NotificationBar.toastr('Internal Server Error', 'error');
+      NotificationBar.error(context, 'Internal Server Error : ${e.toString()}');
     }
 
     EasyLoading.dismiss();

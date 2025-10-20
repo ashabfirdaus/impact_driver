@@ -1,17 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class NotificationBar {
-  static void toastr(String string, String type) {
-    var color = Colors.black;
+  static void error(BuildContext context, String message) {
+    ScaffoldMessenger.of(context)
+        .hideCurrentSnackBar(reason: SnackBarClosedReason.remove);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            const Icon(
+              Icons.error_outline,
+              color: Colors.white,
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                "Ups, $message",
+                style: const TextStyle(color: Colors.white),
+              ),
+            )
+          ],
+        ),
+        backgroundColor: Colors.redAccent,
+        shape: const StadiumBorder(),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
 
-    Fluttertoast.showToast(
-        msg: string,
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: color,
-        textColor: Colors.white,
-        fontSize: 16.0);
+  static void success(BuildContext context, String message) {
+    ScaffoldMessenger.of(context)
+        .hideCurrentSnackBar(reason: SnackBarClosedReason.remove);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            const Icon(
+              Icons.check_circle_outline_outlined,
+              color: Colors.white,
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                message,
+                style: const TextStyle(color: Colors.white),
+              ),
+            )
+          ],
+        ),
+        backgroundColor: Colors.green,
+        shape: const StadiumBorder(),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
   }
 }

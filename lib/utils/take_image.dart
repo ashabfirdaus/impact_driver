@@ -27,7 +27,9 @@ class TakeImage {
       final bytes = await rotatedImage.readAsBytes();
       return 'data:image/jpeg;base64,${base64Encode(bytes)}';
     } else {
-      NotificationBar.toastr('Batal mengambil gambar', 'error');
+      if (context.mounted) {
+        NotificationBar.error(context, 'Batal mengambil gambar');
+      }
       return null;
     }
   }

@@ -35,7 +35,7 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
     if (_formKey.currentState!.validate()) {
       GlobalConfig.unfocus(context);
       if (photos.isEmpty) {
-        NotificationBar.toastr('Gambar Pengiriman harus diisi', 'error');
+        NotificationBar.error(context, 'Gambar Pengiriman harus diisi');
       } else {
         showConfirmation(context);
       }
@@ -52,22 +52,22 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
           'penerima': _receiver.text,
           'foto_bukti': jsonEncode(photosEncode),
           'note': _desc.text,
-          'id': widget.content['id']
+          'id': widget.content['id'].toString()
         },
       );
 
       if (data['statusCode'] == 200) {
-        NotificationBar.toastr(data['message'], 'success');
+        NotificationBar.success(context, data['message']);
         Navigator.pop(context);
         Navigator.pop(context);
         Navigator.pop(context, true);
         EasyLoading.dismiss();
       } else {
         Navigator.pop(context);
-        NotificationBar.toastr(data['message'], 'error');
+        NotificationBar.error(context, data['message']);
       }
     } catch (e) {
-      NotificationBar.toastr('Internal Server Error', 'error');
+      NotificationBar.error(context, 'Internal Server Error : ${e.toString()}');
     }
 
     EasyLoading.dismiss();
@@ -78,8 +78,10 @@ class _AcceptDeliveryState extends State<AcceptDelivery> {
       context: context,
       builder: (BuildContext bc) {
         return Container(
+          height: 130,
           padding: const EdgeInsets.all(20.0),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ElevatedButton.icon(
                 onPressed: () => {

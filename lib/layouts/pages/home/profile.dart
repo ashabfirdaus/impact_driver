@@ -23,7 +23,7 @@ class _ProfileState extends State<Profile> with AutomaticKeepAliveClientMixin {
     // await storage.delete(key: 'token');
     await storage.delete(key: 'user');
     Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
-    NotificationBar.toastr('Logout berhasil', 'success');
+    NotificationBar.error(context, 'Logout berhasil');
   }
 
   @override

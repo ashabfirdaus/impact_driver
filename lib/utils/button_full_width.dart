@@ -10,14 +10,14 @@ class ButtonFullWidth extends StatelessWidget {
   final IconData? icon;
 
   const ButtonFullWidth({
-    Key? key,
+    super.key,
     required this.label,
     required this.action,
     this.color,
     this.confirmation,
     this.background,
     this.icon,
-  }) : super(key: key);
+  });
 
   void showConfirmation(context) {
     showDialog(

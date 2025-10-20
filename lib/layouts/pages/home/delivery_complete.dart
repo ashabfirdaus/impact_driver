@@ -109,10 +109,10 @@ class _DeliveryCompleteState extends State<DeliveryComplete> {
         setStateIfMounted(() {
           listData = [];
         });
-        NotificationBar.toastr(data['message'], 'error');
+        NotificationBar.error(context, data['message']);
       }
     } catch (e) {
-      NotificationBar.toastr('Internal Server Error', 'error');
+      NotificationBar.error(context, 'Internal Server Error : ${e.toString()}');
     }
 
     EasyLoading.dismiss();

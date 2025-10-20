@@ -68,7 +68,10 @@ class ActionMethod {
         GlobalConfig.token = '';
       }
     } catch (e) {
-      return {'statusCode': 500, 'message': 'Internal server error'};
+      return {
+        'statusCode': 500,
+        'message': 'Internal Server Error : ${e.toString()}'
+      };
     }
 
     return {'statusCode': response.statusCode, ...data};
@@ -102,7 +105,10 @@ class ActionMethod {
         GlobalConfig.token = '';
       }
     } catch (e) {
-      return {'statusCode': 500, 'message': 'Internal server error'};
+      return {
+        'statusCode': 500,
+        'message': 'Internal Server Error : ${e.toString()}'
+      };
     }
 
     return {'statusCode': response.statusCode, ...data};

@@ -6,10 +6,10 @@ class ListTransaction extends StatefulWidget {
   final Function action;
 
   const ListTransaction({
-    Key? key,
+    super.key,
     required this.content,
     required this.action,
-  }) : super(key: key);
+  });
 
   @override
   State<ListTransaction> createState() => _ListTransactionState();

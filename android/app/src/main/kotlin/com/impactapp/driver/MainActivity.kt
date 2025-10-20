@@ -1,4 +1,4 @@
-package com.myber.impact
+package com.impactapp.driver
 
 import io.flutter.embedding.android.FlutterActivity
 

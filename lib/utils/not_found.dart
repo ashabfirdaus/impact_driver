@@ -9,12 +9,12 @@ class NotFound extends StatelessWidget {
   final Function? action;
 
   const NotFound({
-    Key? key,
+    super.key,
     this.label,
     this.size,
     required this.isButton,
     this.action,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
